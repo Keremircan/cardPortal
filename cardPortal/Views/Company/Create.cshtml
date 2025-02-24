@@ -1,0 +1,28 @@
+﻿@model Company
+
+@{
+	ViewData["Title"] = "Create Company";
+}
+
+@section CompanyStyle {
+	<link href="~/css/companystyle.css" rel="stylesheet" />
+}
+
+<h1>Create a Company</h1>
+
+<form asp-action="Create" method="post">
+	<div class="form-group">
+		<label for="CompanyName">Company Name</label>
+		<input type="text" class="form-control" asp-for="CompanyName" />
+		<span asp-validation-for="CompanyName" class="text-danger"></span>
+
+		<label for="CompanyAddress">Company Address</label>
+		<input type="text" class="form-control" asp-for="CompanyAddress" />
+		<span asp-validation-for="CompanyAddress" class="text-danger"></span>
+
+		<button type="submit" class="btn btn-primary">Add</button>
+		<button asp-area="" asp-controller="Company" asp-action="Index" class="btn btn-danger">Cancel</button>
+	</div>
+
+
+</form>

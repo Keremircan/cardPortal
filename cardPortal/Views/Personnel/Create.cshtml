@@ -1,0 +1,74 @@
+﻿@model Personnel
+
+@{
+	ViewData["Title"] = "Create Personnel";
+}
+
+@section PersonelStyle{
+	<link href="~/css/personelstyle.css" rel="stylesheet" />
+}
+
+<h1>Create a Personnel</h1>
+
+<form asp-action="Create" method="post">
+	<div class="form-group doubleForm">
+
+		<div>
+			<label for="CardNo">Card No</label>
+			<input type="text" class="form-control" asp-for="CardNo" />
+			<span asp-validation-for="CardNo" class="text-danger"></span>
+
+			<label for="RollId">Roll Id</label>
+			<input type="text" class="form-control" asp-for="RollId" />
+			<span asp-validation-for="RollId" class="text-danger"></span>
+
+			<label for="FullName">Full Name</label>
+			<input type="text" class="form-control" asp-for="FullName" />
+			<span asp-validation-for="FullName" class="text-danger"></span>
+
+			<label for="Company">Company</label>
+			<input type="text" class="form-control" asp-for="Company" />
+			<span asp-validation-for="Company" class="text-danger"></span>
+
+			<label for="PhoneNumber">Phone Number</label>
+			<input type="text" class="form-control" asp-for="PhoneNumber" />
+			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+			<label for="MobileNumber">Mobile Number</label>
+			<input type="text" class="form-control" asp-for="MobileNumber" />
+			<span asp-validation-for="MobileNumber" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label for="PhoneNumber2">Phone Number2</label>
+			<input type="text" class="form-control" asp-for="PhoneNumber2" />
+			<span asp-validation-for="PhoneNumber2" class="text-danger"></span>
+
+			<label for="EmailAddress">Email Address</label>
+			<input type="text" class="form-control" asp-for="EmailAddress" />
+			<span asp-validation-for="EmailAddress" class="text-danger"></span>
+
+			<label for="Password">Password</label>
+			<input type="text" class="form-control" asp-for="Password" />
+			<span asp-validation-for="Password" class="text-danger"></span>
+
+			<label for="JobTitle">Job Title</label>
+			<input type="text" class="form-control" asp-for="JobTitle" />
+			<span asp-validation-for="JobTitle" class="text-danger"></span>
+
+			<label for="WorkAddress">Work Address</label>
+			<input type="text" class="form-control" asp-for="WorkAddress" />
+			<span asp-validation-for="WorkAddress" class="text-danger"></span>
+
+			<label for="Image">Image Url</label>
+			<input type="text" class="form-control" asp-for="Image" />
+			<span asp-validation-for="Image" class="text-danger"></span>
+		</div>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-primary">Add</button>
+		<button asp-area="" asp-controller="Personnel" asp-action="Index" class="btn btn-danger">Cancel</button>
+	</div>
+	
+
+</form>

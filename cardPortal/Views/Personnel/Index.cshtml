@@ -1,0 +1,65 @@
+﻿@model List<Personnel>
+
+@{
+	ViewData["Title"] = "Personnel";
+	
+}
+
+<h1 class="title">Personnel List</h1>
+
+<table class="table table-bordered">
+	<thead class="table-dark">
+		<tr>
+			<th scope="col">Card ID</th>
+			<th scope="col">Card No</th>
+			<th scope="col">Roll Id</th>
+			<th scope="col">Full Name</th>
+			<th scope="col">Company</th>
+			<th scope="col">Company Id</th>
+			<th scope="col">Phone Number</th>
+			<th scope="col">Mobile Number</th>
+			<th scope="col">Phone Number2</th>
+			<th scope="col">Email Address</th>
+			<th scope="col">Password</th>
+			<th scope="col">Job Title</th>
+			<th scope="col">Work Address</th>
+			<th scope="col">Image</th>
+			<th scope="col">Added Date</th>
+			<th scope="col">Updated Date</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var p in Model)
+		{
+			<tr>
+				<td scope="row">@p.CardID</td>
+				<td>@p.CardNo</td>
+				<td>@p.RollId</td>
+				<td>@p.FullName</td>
+				<td>@p.Company</td>
+				<td>@p.CompanyId</td>
+				<td>@p.PhoneNumber</td>
+				<td>@p.MobileNumber</td>
+				<td>@p.PhoneNumber2</td>
+				<td>@p.EmailAddress</td>
+				<td>@p.Password</td>
+				<td>@p.JobTitle</td>
+				<td>@p.WorkAddress</td>
+				<td>@p.Image</td>
+				<td>@p.AddDate</td>
+				<td>@p.UpdDate</td>
+				<td>
+					<a asp-controller="Personnel" asp-action="Edit" asp-route-id="@p.CardID" style="margin-right:10px" class="btn btn-outline-primary">Edit</a>
+					<a asp-controller="Personnel" asp-action="Delete" asp-route-id="@p.CardID" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
+				</td>
+
+			</tr>
+		}
+	</tbody>
+</table>
+
+<div class="addbtn">
+	<a class="btn btn-primary" asp-area="" asp-controller="Personnel" asp-action="Create">Add Personnel</a>
+</div>

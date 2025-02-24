@@ -1,0 +1,59 @@
+﻿@model Login
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login - Admin Panel</title>
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/cardPortal.styles.css" asp-append-version="true" />
+
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+	<div class="container1">
+		<div class="head">
+			<div class="logo">
+				<span class="material-symbols-outlined">
+					shield_person
+				</span>
+				<h1>ADMIN PANEL</h1>
+			</div>
+
+			<h2>LogIn</h2>
+		</div>
+
+		<form asp-controller="Login" asp-action="Index" method="post">
+			<label for="Username">Email Address</label>
+			<input type="email" class="form-control" style="margin-top:5px" asp-for="Username" />
+
+			<label style="margin-top:20px" for="Password">Password</label>
+			<input type="password" class="form-control" style="margin-bottom:30px;margin-top:5px" asp-for="Password" />
+
+
+			<button class="btn btn-primary">Login</button>
+		</form>
+
+		@if (!ViewData.ModelState.IsValid)
+		{
+			<div class="alert alert-danger error">
+				@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+				{
+					<p>@error.ErrorMessage</p>
+				}
+			</div>
+		}
+	</div>
+	
+
+</body>
+</html>
+
+

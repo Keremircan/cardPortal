@@ -1,0 +1,43 @@
+﻿@model List<Admin>
+
+@{
+	ViewData["Title"] = "Admin";
+
+}
+
+<h1 class="title">Admin List</h1>
+
+@* <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="Create">Add Company</a> *@
+
+<table class="table" style="margin-top:20px">
+	<thead class="table-dark">
+		<tr>
+			<th scope="col">Admin ID</th>
+			<th scope="col">Admin Name</th>
+			<th scope="col">Email Address</th>
+			<th scope="col">Company ID</th>
+			<th scope="col">Added Date</th>
+
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var a in Model)
+		{
+			<tr>
+				<td scope="row">@a.AdminID</td>
+				<td>@a.AdminName</td>
+				<td>@a.EmailAddress</td>
+				<td>@a.CompanyID</td>
+				<td>@a.AddDate</td>
+
+				@* <td> *@
+				@* 	<a asp-controller="Admin" asp-action="Edit" asp-route-id="@a.AdminID">Edit</a> *@
+				@* 	<a asp-controller="Admin" asp-action="Delete" asp-route-id="@a.AdminID" onclick="return confirm('Are you sure to delete?')">Delete</a> *@
+				@* </td> *@
+
+			</tr>
+		}
+
+	</tbody>
+</table>

@@ -1,0 +1,76 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Comic Sans MS';
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: black;
+    background-color: lightblue;
+    background: linear-gradient(to right, rgb(223, 251, 250), rgb(83, 222, 253));
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 60%;
+    background-color: rgb(225, 252, 255);
+    border-radius:20px;
+    box-shadow: 0.35rem 0.42rem rgba(132,139, 200, 0.20);
+}
+
+.container1 .head{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.container1 .head .logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+.container1 .head .logo span{
+   font-size:50px;
+
+}
+.container1 form{
+    display:flex;
+    flex-direction:column;
+    margin: 30px 0 10px 0;
+}
+.container1 form label{
+    font-size:16px;
+    font-style:italic;
+}
+.container1 form input {
+    box-shadow: 0.2rem 0.2rem rgba(132,139, 200, 0.20);
+}
+.error{
+    display:flex;
+    align-items:center;
+    height:5px;  
+    padding-top:20px;
+
+}
