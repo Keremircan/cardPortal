@@ -22,6 +22,11 @@ builder.Services.AddAuthentication("Cookies")
         options.LoginPath = "/Login/Index"; // Giriþ yapýlmadýysa buraya yönlendir
     });
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,17 +37,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.UseSession();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

@@ -14,23 +14,26 @@
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+   
 </head>
 <body>
     
     <div class="container1">
         @*----Sidebar Section----*@
         <aside>
-           <div class="toggle">
-                <div class="logo">
+            <div class="toggle">
+               <div class="logo">
                     <img src="~/image/sankologo.png" alt="Sanko Logo" />
-                   <h1>Admin Panel</h1>
+                    <h1>Admin Panel</h1>
+                    <div class="close">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </div>
                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </div>
-               <div class="sidebar" id="sidebar">
+               
+               <div class="sidebar">
                     
                     <a asp-area="" asp-controller="Home" asp-action="Index">
                         <span class="material-symbols-outlined">
@@ -56,7 +59,7 @@
                         </span>
                         <h2>Admin</h2>
                     </a>
-                    <a asp-area="" asp-controller="Login" asp-action="Logout" onclick="return confirm('Are you sure to logout?')">
+                    <a class="logout" asp-area="" asp-controller="Login" asp-action="Logout" onclick="return confirm('Are you sure to logout?')">
                         <span class="material-symbols-outlined">
                             logout
                         </span>
@@ -77,17 +80,12 @@
                         </span>
                     </button>
                     <div class="mode">
-                        <h3>Mode: </h3>
-                        <button>
-                            <span class="material-symbols-outlined activee">
-                                light_mode
-                            </span>
-                        </button>
-                        <button>
-                            <span class="material-symbols-outlined">
-                                dark_mode
-                            </span>
-                        </button>
+                        <span class="material-symbols-outlined activee">
+                            light_mode
+                        </span>
+                        <span class="material-symbols-outlined">
+                            dark_mode
+                        </span>
                     </div>
                     <div class="profile">
                         <h2>@Context.Session.GetString("AdminName")</h2>
@@ -102,6 +100,7 @@
                 @RenderBody()
             </div>
         </main>
+      
     </div>
 
    
@@ -113,7 +112,8 @@
 	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
 	
     <script src="~/js/site.js" asp-append-version="true"></script>
-	<script src="~/js/menuSidebar.js"></script>
+    <script src="~/js/menuSidebar.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
