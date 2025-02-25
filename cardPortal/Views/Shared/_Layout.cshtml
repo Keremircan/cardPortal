@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="~/cardPortal.styles.css" asp-append-version="true" />
     @RenderSection("PersonelStyle", required: false)
     @RenderSection("CompanyStyle", required: false)
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" /> 
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
@@ -27,7 +30,7 @@
                         close
                     </span>
                 </div>
-               <div class="sidebar">
+               <div class="sidebar" id="sidebar">
                     
                     <a asp-area="" asp-controller="Home" asp-action="Index">
                         <span class="material-symbols-outlined">
@@ -101,9 +104,16 @@
         </main>
     </div>
 
+   
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+	
     <script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/menuSidebar.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

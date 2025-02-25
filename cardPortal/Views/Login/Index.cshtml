@@ -31,14 +31,29 @@
 		</div>
 
 		<form asp-controller="Login" asp-action="Index" method="post">
-			<label for="Username">Email Address</label>
-			<input type="email" class="form-control" style="margin-top:5px" asp-for="Username" />
+			<div>
+				<span class="material-symbols-outlined icons">
+					mail
+				</span>
+				<label for="Username">Email Address</label>
+			</div>
+			
+			<input type="email" class="form-control deneme" style="margin-top:5px" asp-for="Username" />
 
-			<label style="margin-top:20px" for="Password">Password</label>
-			<input type="password" class="form-control" style="margin-bottom:30px;margin-top:5px" asp-for="Password" />
+			<div style="margin-top:20px;">
+				<span class="material-symbols-outlined icons">
+					lock
+				</span>
+				<label for="Password">Password</label>
+			</div>
+			<div style="display:flex;margin-bottom:30px;">
+				<input type="password" class="form-control" id="passwordInput" style="padding-right:45px;margin-top:5px;" asp-for="Password" />
+				<button type="button" id="eye-btn">
+					<span class="material-symbols-outlined" style="font-size:18px;">visibility_off</span>
+				</button>
+			</div>
 
-
-			<button class="btn btn-primary">Login</button>
+			<button class="btn btn-primary deneme">Login</button>
 		</form>
 
 		@if (!ViewData.ModelState.IsValid)
@@ -52,7 +67,7 @@
 		}
 	</div>
 	
-
+	<script src="~/js/loginscript.js"></script>
 </body>
 </html>
 

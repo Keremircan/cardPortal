@@ -7,10 +7,14 @@
 
 <h1 class="title">Company List</h1>
 
-<table class="table">
+<div class="addbtn">
+	<a class="btn btn-primary" asp-area="" asp-controller="Company" asp-action="Create">Add Company</a>
+</div>
+
+<table class="table pageTable">
 	<thead class="table-dark">
 		<tr>
-			<th scope="col">Company ID</th>
+			<th class="dn" scope="col">Company ID</th>
 			<th scope="col">Company Name</th>
 			<th scope="col">Company Address</th>
 			<th scope="col">Added Date</th>
@@ -22,7 +26,7 @@
 		@foreach (var c in Model)
 		{
 			<tr>
-				<td scope="row">@c.CompanyID</td>
+				<td class="dn" scope="row">@c.CompanyID</td>
 				<td>@c.CompanyName</td>
 				<td>@c.CompanyAddress</td>
 				<td>@c.AddDate</td>
@@ -35,9 +39,7 @@
 	</tbody>
 </table>
 
-<div class="addbtn">
-	<a class="btn btn-primary" asp-area="" asp-controller="Company" asp-action="Create">Add Company</a>
-</div>
+
 
 	
 

@@ -1,4 +1,24 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
 
-// Write your JavaScript code.
+$(document).ready(function () {
+	$(".pageTable").DataTable({});
+
+});
+
+
+
+
+
+//$(document).on("click", "#eye-btn", function () {
+//	var passwordInput = $("#passwordInput");
+//	var icon = $(this).find("span");
+
+//	if (passwordInput.attr("type") === "password") {
+//		passwordInput.attr("type", "text");
+//		icon.text("visibility");
+//	} else {
+//		passwordInput.attr("type", "password");
+//		icon.text("visibility_off");
+//	}
+//});
+

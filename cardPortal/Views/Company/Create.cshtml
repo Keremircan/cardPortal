@@ -8,10 +8,10 @@
 	<link href="~/css/companystyle.css" rel="stylesheet" />
 }
 
-<h1>Create a Company</h1>
+<h1 class="comHead">Create a Company</h1>
 
-<form asp-action="Create" method="post">
-	<div class="form-group">
+<form class="comForm" asp-action="Create" method="post">
+	<div class="form-group comInput">
 		<label for="CompanyName">Company Name</label>
 		<input type="text" class="form-control" asp-for="CompanyName" />
 		<span asp-validation-for="CompanyName" class="text-danger"></span>
