@@ -360,23 +360,167 @@ main .mainSection .comForm button {
 }
 
 /*----Home Index----*/
-.containers{
+.containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-left: 20px;
+    min-height: 40rem;
+}
+.containers .fontsize{
+    font-size:1.3rem;
+}
+
+.containers .grid1{
     display:flex;
     flex-direction:column;
-    justify-content:center;    
-    gap:30px;
+    gap:2.5rem;
+/*    background-color:blue;*/
+    
+}
+    .containers .grid1 .quantity {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+        height: 35%;
+        background-color: white;
+    }
+
+.containers .grid1 .circles{
+    display:flex;
+    flex-direction:row;   
+    justify-content:center;
+    align-items:center;
+    gap:3rem;
+    margin-top:10px;
 }
 
-.containers .cnt{
-    width:60%;
-    height:10rem;
-    background-color:white;
-    border-radius:30px;
+.containers .grid1 .cnt {
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    background-color: rgb(184, 223, 255);
+    border:5px inset black;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+
 }
 
+.containers .tables {
+    width:100%;
+    min-height: 20rem;
+    background-color: white;
+    border-radius:15px;
+    box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+}
+
+.containers .tables h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    background: rgb(184, 223, 255);
+    border-bottom: 3px solid black;
+    width: 100%;
+    height: 30%;
+}
+.containers .tables Table{
+    
+    margin-top:20px;
+}    
+.containers .tables Table th,td{
+    font-size:1rem;
+} 
+.containers .grid2{
+    display:flex;
+    flex-direction:column;
+    gap:2.5rem;
+    align-items:center;
+/*    background-color:red;*/
+}
+    .containers .grid2 .activeAdmin {
+        background-color: white;
+        width: 80%;
+        min-height: 10rem;
+        border-radius: 15px;
+        margin-top: 10px;
+        box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+    }
+
+.containers .grid2 .activeAdmin h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    background: rgb(184, 223, 255);
+    border-bottom: 3px solid black;
+    width: 100%;
+    height: 50%;
+}
+.containers .grid2 .activeAdmin h1 {
+    margin-top:1rem;
+}
+
+.todolist {
+    width: 90%;
+    min-height: 25rem;
+    background-color: white;
+    transform: translateX(7%);
+    border-radius: 15px;
+    box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+}
+.todolist .todolisthead{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    background: rgb(184, 223, 255);
+    border-bottom: 3px solid black;
+    width: 100%;
+    height: 30%;
+}
+.todolist .todo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.todolist .todo1{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+   
+}
+.todolist .todo1 textarea{
+    padding:20px;
+    background-color:lightgray;
+    margin-top:15px;
+    border-radius:15px;
+}
+
+.todolist .todo1 button{
+    width:40%;
+}
+
+.todolist .todo2{
+   border-left:1px solid black;
+}
+.todolist .todo2 h2{
+    text-align:center;
+    height:2rem;
+    border-bottom:1px solid black;
+}
 
 /*-------------------Media Queries---------------------*/
-
 /*--------Tablet Mode----------*/
 @media screen and (max-width:1200px) {
     .container1 {
