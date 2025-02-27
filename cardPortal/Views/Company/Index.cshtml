@@ -22,24 +22,29 @@
 		</tr>
 	</thead>
 	<tbody>
-
-		@foreach (var c in Model)
-		{
-			<tr>
-				<td class="dn" scope="row">@c.CompanyID</td>
-				<td>@c.CompanyName</td>
-				<td>@c.CompanyAddress</td>
-				<td>@c.AddDate</td>
-				<td>
-					<a asp-controller="Company" asp-action="Edit" asp-route-id="@c.CompanyID" style="margin-right:10px" class="btn btn-outline-primary">Edit</a>
-					<a asp-controller="Company" asp-action="Delete" asp-route-id="@c.CompanyID" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
-				</td>
-			</tr>
+		@if (Model != null && Model.Any()){
+			@foreach (var c in Model)
+			{
+				<tr>
+					<td class="dn" scope="row">@c.CompanyID</td>
+					<td>@c.CompanyName</td>
+					<td>@c.CompanyAddress</td>
+					<td>@c.AddDate</td>
+					<td>
+						<a asp-controller="Company" asp-action="Edit" asp-route-id="@c.CompanyID" style="margin-right:10px" class="btn btn-outline-primary">Edit</a>
+						<a asp-controller="Company" asp-action="Delete" asp-route-id="@c.CompanyID" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
+					</td>
+				</tr>
+			}
 		}
+		
 	</tbody>
 </table>
 
-
+@if (Model == null || !Model.Any())
+{
+	<div class="alert alert-warning">No company found!</div>
+}
 
 	
 

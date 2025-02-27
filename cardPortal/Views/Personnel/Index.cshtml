@@ -34,34 +34,41 @@
 		</tr>
 	</thead>
 	<tbody>
-
-		@foreach (var p in Model)
+		@if (Model != null && Model.Any())
 		{
-			<tr>
-				<td class="dn" scope="row">@p.CardID</td>
-				@* <td>@p.CardNo</td> *@
-				@* <td>@p.RollId</td> *@
-				<td>@p.FullName</td>
-				<td>@p.Company</td>
-				<td class="dn">@p.CompanyId</td>
-				@* <td>@p.PhoneNumber</td> *@
-				<td class="dn">@p.MobileNumber</td>
-				@* <td>@p.PhoneNumber2</td> *@
-				<td class="dn">@p.EmailAddress</td>
-				@* <td>@p.Password</td> *@
-				<td class="dn">@p.JobTitle</td>
-				<td class="dn">@p.WorkAddress</td>
-				@* <td>@p.Image</td> *@
-				<td>@p.AddDate</td>
-				<td class="dn">@p.UpdDate</td>
-				<td>
-					<a asp-controller="Personnel" asp-action="Edit" asp-route-id="@p.CardID" style="margin-right:10px" class="btn btn-outline-primary">Edit</a>
-					<a asp-controller="Personnel" asp-action="Delete" asp-route-id="@p.CardID" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
-				</td>
+			@foreach (var p in Model)
+			{
+				<tr>
+					<td class="dn">@p.CardID</td>
+					@* <td>@p.CardNo</td> *@
+					@* <td>@p.RollId</td> *@
+					<td>@p.FullName</td>
+					<td>@p.Company</td>
+					<td class="dn">@p.CompanyId</td>
+					@* <td>@p.PhoneNumber</td> *@
+					<td class="dn">@p.MobileNumber</td>
+					@* <td>@p.PhoneNumber2</td> *@
+					<td class="dn">@p.EmailAddress</td>
+					@* <td>@p.Password</td> *@
+					<td class="dn">@p.JobTitle</td>
+					<td class="dn">@p.WorkAddress</td>
+					@* <td>@p.Image</td> *@
+					<td>@p.AddDate</td>
+					<td class="dn">@p.UpdDate</td>
+					<td>
+						<a asp-controller="Personnel" asp-action="Edit" asp-route-id="@p.CardID" style="margin-right:10px" class="btn btn-outline-primary">Edit</a>
+						<a asp-controller="Personnel" asp-action="Delete" asp-route-id="@p.CardID" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
+					</td>
 
-			</tr>
+				</tr>
+			}
 		}
+		
 	</tbody>
+
 </table>
 
-
+@if (Model == null || !Model.Any())
+{
+	<div class="alert alert-warning">No personnel found!</div>
+}
