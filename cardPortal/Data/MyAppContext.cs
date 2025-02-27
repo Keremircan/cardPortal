@@ -12,6 +12,8 @@ namespace cardPortal.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Login> Logins { get; set; }
+        public DbSet<Change> Changes { get; set; }
+
         
     }
 }

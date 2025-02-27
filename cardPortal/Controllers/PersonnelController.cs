@@ -33,6 +33,16 @@ namespace cardPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+                var newchange = new Change
+                {
+
+                    Name = personnel.FullName,
+                    Category = "Personnel",
+                    Action = "Added",
+                    ChangeTime = DateTime.Now
+                };
+                await _context.Changes.AddAsync(newchange);
+
                 personnel.AddDate = DateTime.Now;
                 personnel.UpdDate = null;
                 personnel.CompanyId = int.Parse(HttpContext.Session.GetString("CompanyID"));
@@ -67,6 +77,16 @@ namespace cardPortal.Controllers
 
             if (ModelState.IsValid)
             {
+                var newchange = new Change
+                {
+
+                    Name = personnel.FullName,
+                    Category = "Personnel",
+                    Action = "Edited",
+                    ChangeTime = DateTime.Now
+                };
+                await _context.Changes.AddAsync(newchange);
+
                 currentPer.UpdDate= DateTime.Now;
                 currentPer.CardNo = personnel.CardNo;
                 currentPer.RollId = personnel.RollId;
@@ -95,6 +115,16 @@ namespace cardPortal.Controllers
             {
                 return NotFound();
             }
+
+            var newchange = new Change
+            {
+
+                Name = currentPer.FullName,
+                Category = "Personnel",
+                Action = "Deleted",
+                ChangeTime = DateTime.Now
+            };
+            await _context.Changes.AddAsync(newchange);
 
             _context.Personnels.Remove(currentPer);
             await _context.SaveChangesAsync();

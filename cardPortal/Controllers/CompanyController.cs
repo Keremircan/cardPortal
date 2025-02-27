@@ -31,6 +31,16 @@ namespace cardPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+                var newchange = new Change
+                {
+
+                    Name = company.CompanyName,
+                    Category = "Company",
+                    Action = "Added",
+                    ChangeTime = DateTime.Now
+                };
+                await _context.Changes.AddAsync(newchange);
+
                 company.AddDate = DateTime.Now;
                 _context.Companies.Add(company);
                 await _context.SaveChangesAsync();
@@ -64,6 +74,16 @@ namespace cardPortal.Controllers
 
             if (ModelState.IsValid)
             {
+                var newchange = new Change
+                {
+
+                    Name = company.CompanyName,
+                    Category = "Company",
+                    Action = "Edited",
+                    ChangeTime = DateTime.Now
+                };
+                await _context.Changes.AddAsync(newchange);
+
                 currentCom.CompanyName = company.CompanyName;
                 currentCom.CompanyAddress = company.CompanyAddress;
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace cardPortal.Models
 {
@@ -15,5 +16,6 @@ namespace cardPortal.Models
         [Required]
         public int CompanyID { get; set; }
         public DateTime AddDate { get; set; }
+
     }
 }

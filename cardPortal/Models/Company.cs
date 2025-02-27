@@ -12,5 +12,7 @@ namespace cardPortal.Models
         [Required, MaxLength(200)]
         public string CompanyAddress { get; set; } = string.Empty;
         public DateTime AddDate { get; set; }
+
+        
     }
 }

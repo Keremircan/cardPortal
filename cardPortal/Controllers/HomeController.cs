@@ -3,6 +3,7 @@ using cardPortal.Data;
 using cardPortal.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace cardPortal.Controllers
 {
@@ -19,17 +20,31 @@ namespace cardPortal.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            int personnelCount = _context.Personnels.Count();
-            HttpContext.Session.SetInt32("personnelCount", personnelCount);
+            int companyid = int.Parse(HttpContext.Session.GetString("CompanyID"));
 
-            return View();
-        }
-        public IActionResult GetPersonnelCount()
-        {
-            int? personnelCount = HttpContext.Session.GetInt32("personnelCount") ?? 0;
-            return Json(new { count = personnelCount });
+            int personnelCount = _context.Personnels.Where(p=>p.CompanyId== companyid).Count();
+            HttpContext.Session.SetInt32("personnelCount", personnelCount);
+            int companyCount = _context.Companies.Count();
+            HttpContext.Session.SetInt32("companyCount", companyCount);
+            int adminCount = _context.Admins.Count();
+            HttpContext.Session.SetInt32("adminCount", adminCount);
+
+            int loginCount = _context.Logins.Count();
+            HttpContext.Session.SetInt32("loginCount", loginCount);
+
+            var logins = await _context.Logins.ToListAsync();
+
+            var changes = await _context.Changes.Where(c=>c.ChangeId==companyid).ToListAsync();
+
+            var model = new DashboardViewModel
+            {
+                Logins = logins,
+                Changes = changes
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model DashboardViewModel
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -10,14 +12,14 @@
         <div class="quantity">
             <h2 style="text-align:center;font-size:1.5rem;">Total Quantity of ... </h2>
             <div class="circles">
-                <div class="cnt">
-                    <h2>Personnel</h2>
+                <div class="cnt activee" id="perCircle">
+                    <h2 id="personnelText" data-count="@Context.Session.GetInt32("personnelCount")">Personnel</h2>
                 </div>
-                <div class="cnt">
-                    <h2>Company</h2>
+                <div class="cnt" id="comCircle">
+                    <h2 id="companyText" data-count="@Context.Session.GetInt32("companyCount")">Company</h2>
                 </div>
-                <div class="cnt">
-                    <h2>Admin</h2>
+                <div class="cnt" id="admCircle">
+                    <h2 id="adminText" data-count="@Context.Session.GetInt32("adminCount")">Admin</h2>
                 </div>
             </div>
         </div>
@@ -27,19 +29,22 @@
             <Table>
                 <tr>
                     <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                    <th>Changed Time</th>
                 </tr>
-                <tr>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                </tr>
-                <tr>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                </tr>
+                @if (Model.Changes != null)
+                {
+                    @foreach (var change in Model.Changes)
+                    {
+                        <tr>
+                            <td>@change.Name</td>
+                            <td>@change.Category</td>
+                            <td>@change.Action</td>
+                            <td>@change.ChangeTime</td>
+                        </tr>
+                    }
+                }
             </Table>
         </div>
    </div>
@@ -47,28 +52,29 @@
     <div class="grid2">
         <div class="activeAdmin">
             <h2 class="fontsize">Active Admin Number</h2>
-            <h1>2</h1>
+            <h1>@Context.Session.GetInt32("loginCount")</h1>
         </div>
 
         <div class="tables">
             <h2 class="fontsize">Recently Logins</h2>
             <Table>
                 <tr>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
+                    <th>Admin Name</th>
+                    <th>Login Date</th>
                 </tr>
-                <tr>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                </tr>
-                <tr>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                    <td>Kerem</td>
-                </tr>
+
+                @if(Model.Logins != null){
+                    @foreach (var admin in Model.Logins)
+                    {
+                        <tr>
+                            <td>@admin.Username</td>
+                            <td>@admin.LoginDate</td>
+                        </tr>
+                    }
+                }
+
             </Table>
+
         </div>
     </div>
 

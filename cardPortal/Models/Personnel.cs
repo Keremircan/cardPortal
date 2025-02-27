@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata;
 
 namespace cardPortal.Models
@@ -15,8 +16,6 @@ namespace cardPortal.Models
         public string FullName { get; set; } = string.Empty;
         [Required,MaxLength(70)]
         public string Company { get; set; } = string.Empty;
-        [Required]
-        public int CompanyId { get; set; }
         public string? PhoneNumber { get; set; } = string.Empty;
         [Required]
         [RegularExpression(@"^[1-9]{1}[0-9]{9,14}$", ErrorMessage = "Phone number is valid. '0' shouldn't be in beginning!")]
@@ -33,6 +32,11 @@ namespace cardPortal.Models
         public string? Image { get; set; } = string.Empty;
         public DateTime AddDate { get; set; }
         public DateTime? UpdDate { get; set; }
+
+        [Required]
+        public int CompanyId { get; set; }
+
+        
 
     }
 }

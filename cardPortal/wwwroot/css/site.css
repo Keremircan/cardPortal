@@ -365,7 +365,7 @@ main .mainSection .comForm button {
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     margin-left: 20px;
-    min-height: 40rem;
+    min-height: 35rem;
 }
 .containers .fontsize{
     font-size:1.3rem;
@@ -385,7 +385,7 @@ main .mainSection .comForm button {
         align-items: center;
         border-radius: 15px;
         box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
-        height: 35%;
+        height: 15rem;
         background-color: white;
     }
 
@@ -407,12 +407,13 @@ main .mainSection .comForm button {
     border-radius: 100px;
     justify-content: center;
     align-items: center;
+    transition: transform 1s;
 
 }
 
 .containers .tables {
     width:100%;
-    min-height: 20rem;
+    min-height: 15rem;
     background-color: white;
     border-radius:15px;
     box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);

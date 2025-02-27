@@ -48,6 +48,17 @@ namespace cardPortal.Controllers
             
             HttpContext.Session.SetString("Username", login.Username);
 
+            var prevlogin = await _context.Logins.Where(l => l.Username == login.Username).ToListAsync();
+            if (prevlogin != null)
+            {
+                foreach (var log in prevlogin)
+                {
+                    _context.Logins.Remove(log);   
+                }
+                await _context.SaveChangesAsync();
+            }
+
+
             login.LoginDate = DateTime.Now;
             _context.Logins.Add(login);
             await _context.SaveChangesAsync();
@@ -57,8 +68,9 @@ namespace cardPortal.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            var user = HttpContext.Session.GetString("Username");
-            var currentuser = await _context.Logins.FirstOrDefaultAsync(l => l.Username == user);
+            var username = HttpContext.Session.GetString("Username");
+            var currentuser = await _context.Logins.FirstOrDefaultAsync(l => l.Username == username);
+
             if (currentuser != null)
             {
                 _context.Logins.Remove(currentuser);
