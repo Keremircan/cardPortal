@@ -8,7 +8,43 @@
 
 <div class="containers"> 
 
-   <div class="grid1">
+    <div class="grid1">
+        
+
+        <div class="tables">
+            <h2 class="fontsize">Today Changes</h2>
+            <Table>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                    <th>Changed Time</th>
+                </tr>
+                @if (Model.Changes != null && Model.Changes.Any())
+                {
+                    @foreach (var change in Model.Changes)
+                    {
+                        <tr>
+                            <td>@change.Name</td>
+                            <td>@change.Category</td>
+                            <td>@change.Action</td>
+                            <td>@change.ChangeTime</td>
+                        </tr>
+                
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4">No changes found.</td> 
+                    </tr>
+                }
+            </Table>
+        </div>
+
+    </div>
+
+    <div class="grid2">
         <div class="quantity">
             <h2 style="text-align:center;font-size:1.5rem;">Total Quantity of ... </h2>
             <div class="circles">
@@ -24,32 +60,6 @@
             </div>
         </div>
 
-        <div class="tables">
-            <h2 class="fontsize">Today Changes</h2>
-            <Table>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                    <th>Changed Time</th>
-                </tr>
-                @if (Model.Changes != null)
-                {
-                    @foreach (var change in Model.Changes)
-                    {
-                        <tr>
-                            <td>@change.Name</td>
-                            <td>@change.Category</td>
-                            <td>@change.Action</td>
-                            <td>@change.ChangeTime</td>
-                        </tr>
-                    }
-                }
-            </Table>
-        </div>
-   </div>
-
-    <div class="grid2">
         <div class="activeAdmin">
             <h2 class="fontsize">Active Admin Number</h2>
             <h1>@Context.Session.GetInt32("loginCount")</h1>
@@ -63,13 +73,15 @@
                     <th>Login Date</th>
                 </tr>
 
-                @if(Model.Logins != null){
+                @if (Model.Logins != null && Model.Logins.Any())
+                {
                     @foreach (var admin in Model.Logins)
                     {
                         <tr>
                             <td>@admin.Username</td>
                             <td>@admin.LoginDate</td>
                         </tr>
+
                     }
                 }
 

@@ -36,7 +36,7 @@ namespace cardPortal.Controllers
 
             var logins = await _context.Logins.ToListAsync();
 
-            var changes = await _context.Changes.Where(c=>c.ChangeId==companyid).ToListAsync();
+            var changes = await _context.Changes.Where(c=>c.CompanyID==companyid).ToListAsync();
 
             var model = new DashboardViewModel
             {

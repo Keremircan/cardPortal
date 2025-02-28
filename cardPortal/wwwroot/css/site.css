@@ -6,15 +6,17 @@
     --color-table: white;
     --color-form: rgba(173, 216, 230, 0.8);
     --color-textdark: black;
+    --color-dashback: rgb(51, 63, 156);
 }
 
 .dark-theme-variables {
     --color-background: #181a1e;
     --color-text: white;
     --color-sidebar: lightgray;
-    --color-table: lightgray;
+    --color-table: rgb(245, 245, 245);
     --color-form: lightgray;
-    --color-textdark:white;
+    --color-textdark: white;
+    --color-dashback: gray;
 }
 
 * {
@@ -126,6 +128,7 @@ aside {
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            gap:1.2rem;
         }
 
     aside .sidebar:hover {
@@ -137,7 +140,7 @@ aside {
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        height: 7rem;
+        height: 5rem;
         width: 100%;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -203,17 +206,13 @@ main header .headSection {
             border: 1px solid black;
             border-radius: 3px;
             padding: 5px;
-        }
-
-        main header .headSection .mode h3 {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
+            background-color: rgb(51, 63, 156);
+            color:white;
         }
 
         main header .headSection .mode span.activee {
-            background-color: rgb(0, 148, 255);
-            color: white;
+            background-color: beige;
+            color: black;
         }
 
     main header .headSection .profile {
@@ -359,13 +358,14 @@ main .mainSection .comForm button {
     border-radius:10px; 
 }
 
-/*----Home Index----*/
+/*----Home Index--------*/
 .containers {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     margin-left: 20px;
     min-height: 35rem;
+   
 }
 .containers .fontsize{
     font-size:1.3rem;
@@ -374,11 +374,10 @@ main .mainSection .comForm button {
 .containers .grid1{
     display:flex;
     flex-direction:column;
-    gap:2.5rem;
-/*    background-color:blue;*/
+    gap:2rem;
     
 }
-    .containers .grid1 .quantity {
+    .containers .grid2 .quantity {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -389,7 +388,7 @@ main .mainSection .comForm button {
         background-color: white;
     }
 
-.containers .grid1 .circles{
+.containers .grid2 .circles{
     display:flex;
     flex-direction:row;   
     justify-content:center;
@@ -398,25 +397,28 @@ main .mainSection .comForm button {
     margin-top:10px;
 }
 
-.containers .grid1 .cnt {
-    display: flex;
-    width: 10rem;
-    height: 10rem;
-    background-color: rgb(184, 223, 255);
-    border:5px inset black;
-    border-radius: 100px;
-    justify-content: center;
-    align-items: center;
-    transition: transform 1s;
-
-}
+    .containers .grid2 .cnt {
+        display: flex;
+        width: 10rem;
+        height: 10rem;
+        background-color: var(--color-dashback);
+        border: 5px inset black;
+        border-radius: 100px;
+        justify-content: center;
+        align-items: center;
+        transition: transform 1s;
+        color: var(--color-table);
+    }
 
 .containers .tables {
     width:100%;
-    min-height: 15rem;
+    min-height:15rem;
     background-color: white;
     border-radius:15px;
     box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+    width: 100%;
+    table-layout: fixed;
+    overflow: auto;
 }
 
 .containers .tables h2 {
@@ -425,28 +427,43 @@ main .mainSection .comForm button {
     justify-content: center;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
-    background: rgb(184, 223, 255);
+    background-color: var(--color-dashback);
     border-bottom: 3px solid black;
     width: 100%;
-    height: 30%;
+    height: 20%;
+     color: var(--color-table);
 }
 .containers .tables Table{
+    margin-top:10px;
+    height:auto;
     
-    margin-top:20px;
-}    
+
+}
+.containers .tables Table tr:first-child {
+    border-bottom: 2px solid black;
+    margin-bottom: 5px;
+}
+.containers .tables Table tr{
+    display: table-row;
+    height:30px;
+   
+}
 .containers .tables Table th,td{
     font-size:1rem;
 } 
+.containers .tables Table td:last-child{
+    margin-right:-25px;
+}
 .containers .grid2{
     display:flex;
     flex-direction:column;
-    gap:2.5rem;
+    gap:2rem;
     align-items:center;
 /*    background-color:red;*/
 }
     .containers .grid2 .activeAdmin {
         background-color: white;
-        width: 80%;
+        width: 60%;
         min-height: 10rem;
         border-radius: 15px;
         margin-top: 10px;
@@ -459,10 +476,11 @@ main .mainSection .comForm button {
     justify-content: center;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
-    background: rgb(184, 223, 255);
+    background-color: var(--color-dashback);
     border-bottom: 3px solid black;
     width: 100%;
     height: 50%;
+     color: var(--color-table);
 }
 .containers .grid2 .activeAdmin h1 {
     margin-top:1rem;
@@ -475,6 +493,7 @@ main .mainSection .comForm button {
     transform: translateX(7%);
     border-radius: 15px;
     box-shadow: 0.3rem 0.35rem rgba(132,139, 200, 0.20);
+    margin-top:2rem;
 }
 .todolist .todolisthead{
     display: flex;
@@ -482,10 +501,11 @@ main .mainSection .comForm button {
     justify-content: center;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
-    background: rgb(184, 223, 255);
+    background-color: var(--color-dashback);
     border-bottom: 3px solid black;
     width: 100%;
-    height: 30%;
+    height: 20%;
+    color: var(--color-table);
 }
 .todolist .todo{
     display: grid;
@@ -612,6 +632,14 @@ main .mainSection .comForm button {
     main .mainSection .perForm .perForm button {
         width: 12rem;
     }
+
+    .containers {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        margin-left: 20px;
+        min-height: 35rem;
+    }
 }
 
 
@@ -726,5 +754,13 @@ main .mainSection .comForm button {
     main .mainSection .perForm button {
         width: 8rem;
         
+    }
+
+    .containers {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        margin-left: 20px;
+        min-height: 35rem;
     }
 }

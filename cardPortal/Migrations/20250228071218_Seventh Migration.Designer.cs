@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using cardPortal.Data;
 
@@ -11,9 +12,11 @@ using cardPortal.Data;
 namespace cardPortal.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    partial class MyAppContextModelSnapshot : ModelSnapshot
+    [Migration("20250228071218_Seventh Migration")]
+    partial class SeventhMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,6 +84,8 @@ namespace cardPortal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ChangeId");
+
+                    b.HasIndex("CompanyID");
 
                     b.ToTable("Changes");
                 });
@@ -198,6 +203,22 @@ namespace cardPortal.Migrations
                     b.HasKey("CardID");
 
                     b.ToTable("Personnels");
+                });
+
+            modelBuilder.Entity("cardPortal.Models.Change", b =>
+                {
+                    b.HasOne("cardPortal.Models.Company", "Company")
+                        .WithMany("Changes")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("cardPortal.Models.Company", b =>
+                {
+                    b.Navigation("Changes");
                 });
 #pragma warning restore 612, 618
         }

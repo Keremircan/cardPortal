@@ -33,19 +33,21 @@ namespace cardPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+                var adminCompID = int.Parse(HttpContext.Session.GetString("CompanyID"));
                 var newchange = new Change
                 {
 
                     Name = personnel.FullName,
                     Category = "Personnel",
                     Action = "Added",
-                    ChangeTime = DateTime.Now
+                    ChangeTime = DateTime.Now,
+                    CompanyID = adminCompID
                 };
                 await _context.Changes.AddAsync(newchange);
 
                 personnel.AddDate = DateTime.Now;
                 personnel.UpdDate = null;
-                personnel.CompanyId = int.Parse(HttpContext.Session.GetString("CompanyID"));
+                personnel.CompanyId = adminCompID;
                 _context.Personnels.Add(personnel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -77,13 +79,15 @@ namespace cardPortal.Controllers
 
             if (ModelState.IsValid)
             {
+                var adminCompID = int.Parse(HttpContext.Session.GetString("CompanyID"));
                 var newchange = new Change
                 {
 
                     Name = personnel.FullName,
                     Category = "Personnel",
                     Action = "Edited",
-                    ChangeTime = DateTime.Now
+                    ChangeTime = DateTime.Now,
+                    CompanyID = adminCompID
                 };
                 await _context.Changes.AddAsync(newchange);
 
@@ -115,14 +119,15 @@ namespace cardPortal.Controllers
             {
                 return NotFound();
             }
-
+            var adminCompID = int.Parse(HttpContext.Session.GetString("CompanyID"));
             var newchange = new Change
             {
 
                 Name = currentPer.FullName,
                 Category = "Personnel",
                 Action = "Deleted",
-                ChangeTime = DateTime.Now
+                ChangeTime = DateTime.Now,
+                CompanyID = adminCompID
             };
             await _context.Changes.AddAsync(newchange);
 

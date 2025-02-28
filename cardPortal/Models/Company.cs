@@ -13,6 +13,5 @@ namespace cardPortal.Models
         public string CompanyAddress { get; set; } = string.Empty;
         public DateTime AddDate { get; set; }
 
-        
     }
 }

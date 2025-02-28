@@ -31,13 +31,15 @@ namespace cardPortal.Controllers
         {
             if (ModelState.IsValid)
             {
+                var adminCompID = int.Parse(HttpContext.Session.GetString("CompanyID"));
                 var newchange = new Change
                 {
 
                     Name = company.CompanyName,
                     Category = "Company",
                     Action = "Added",
-                    ChangeTime = DateTime.Now
+                    ChangeTime = DateTime.Now,
+                    CompanyID = adminCompID
                 };
                 await _context.Changes.AddAsync(newchange);
 
@@ -74,13 +76,15 @@ namespace cardPortal.Controllers
 
             if (ModelState.IsValid)
             {
+                var adminCompID = int.Parse(HttpContext.Session.GetString("CompanyID"));
                 var newchange = new Change
                 {
 
                     Name = company.CompanyName,
                     Category = "Company",
                     Action = "Edited",
-                    ChangeTime = DateTime.Now
+                    ChangeTime = DateTime.Now,
+                    CompanyID = adminCompID
                 };
                 await _context.Changes.AddAsync(newchange);
 
