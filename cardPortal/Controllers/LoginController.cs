@@ -37,6 +37,7 @@ namespace cardPortal.Controllers
                 return View(login);
             }else {
                 HttpContext.Session.SetString("AdminName", admin.AdminName);
+                HttpContext.Session.SetString("AdminID", admin.AdminID.ToString());
                 HttpContext.Session.SetString("CompanyID", admin.CompanyID.ToString());
             }
 

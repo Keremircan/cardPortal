@@ -46,7 +46,7 @@
 
     <div class="grid2">
         <div class="quantity">
-            <h2 style="text-align:center;font-size:1.5rem;">Total Quantity of ... </h2>
+            <h2>Total Quantity of ... </h2>
             <div class="circles">
                 <div class="cnt activee" id="perCircle">
                     <h2 id="personnelText" data-count="@Context.Session.GetInt32("personnelCount")">Personnel</h2>
@@ -95,18 +95,35 @@
 <div class="todolist">
     <h2 class="todolisthead fontsize">To Do List</h2>
     <div class="todo">
-        <form class="todo1">
-            <textarea name="task" rows="4" cols="40" placeholder="Type a task..."></textarea>
+        <form class="todo1" asp-action="Index" method="post">
+            <textarea name="Description" rows="4" cols="30" placeholder="Type a task..."></textarea>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
         <div class="todo2">
             <h2>Tasks</h2>
-            <ol>
-                <li>Task1</li>
-                <li>Task2</li>
-                <li>Task3</li>
-                <li>Task4</li>
-            </ol>
+            <div style="padding-left:15px;padding-top:15px;">
+                @if (Model.Todos != null && Model.Todos.Any())
+                {
+                    @foreach (var todo in Model.Todos)
+                    {
+                        <div style="display:flex;">
+                            
+                            <h3>@todo.Description</h3>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@todo.TodoID" class="btn btn-danger xbtn">X</a>
+
+                        </div>
+                    }
+                }
+
+            </div>
+            
+            @if ((Model.Todos?.Count() ?? 0) == 0)
+            {
+                <h3>No tasks Found!</h3>
+            }
         </div>
     </div>
 </div>
+<script>
+    console.log(@Json.Serialize(Model.Todos));
+</script>

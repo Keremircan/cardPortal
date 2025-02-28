@@ -4,5 +4,7 @@
     {
         public required List<Login> Logins { get; set; }
         public required List<Change> Changes { get; set; }
+        public required List<Todo> Todos { get; set; }
+
     }
 }

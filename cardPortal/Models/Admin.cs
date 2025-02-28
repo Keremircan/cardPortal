@@ -16,6 +16,6 @@ namespace cardPortal.Models
         [Required]
         public int CompanyID { get; set; }
         public DateTime AddDate { get; set; }
-
+        
     }
 }
