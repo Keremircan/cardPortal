@@ -24,8 +24,8 @@ body {
     user-select: none;
     overflow-x: hidden;
     color: black;
-    background-color: lightblue;
-    background: linear-gradient(to right, rgb(223, 251, 250), rgb(83, 222, 253));
+    background-color: #1e3c72;
+    background: linear-gradient(to right, #2a5298, #1e3c72);
 }
 
 .container1 {
@@ -35,9 +35,10 @@ body {
     align-items: center;
     min-width: 30%;
     height: 70%;
-    background-color: rgb(225, 252, 255);
-    border-radius:20px;
-    box-shadow: 0.35rem 0.42rem rgba(132,139, 200, 0.20);
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    border: 5px solid #ccc;
 }
 
 .container1 .head{

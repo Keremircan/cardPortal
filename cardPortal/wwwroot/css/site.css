@@ -1,22 +1,31 @@
 
 :root {
-    --color-background: beige;
+    /*    --color-background: beige;
     --color-text: navy;
     --color-sidebar: white;
     --color-table: white;
     --color-form: rgba(173, 216, 230, 0.8);
     --color-textdark: black;
+    --color-dashback: rgb(51, 63, 156);*/
+    --color-background: #F3F4F6; /* Arka plan - Açýk gri */
+    --color-text: navy; /* Metin rengi - Koyu mavi */
+    --color-sidebar: white; /* Sidebar - Beyaz */
+    --color-table: white; /* Tablo arka planý - Beyaz */
+    --color-form:rgba(216, 237, 252,0.8); /* Form arka planý - Açýk mavi (þeffaf) */
+    --color-textdark: white; 
     --color-dashback: rgb(51, 63, 156);
+    --color-title:black;
 }
 
 .dark-theme-variables {
-    --color-background: #181a1e;
+    --color-background: #121212;
     --color-text: white;
     --color-sidebar: lightgray;
     --color-table: rgb(245, 245, 245);
     --color-form: lightgray;
-    --color-textdark: white;
-    --color-dashback: rgb(71, 71, 71);
+    --color-textdark: black;
+    --color-dashback: lightgray;
+    --color-title: white;
 }
 
 * {
@@ -145,7 +154,7 @@ aside {
         text-decoration: none;
         transition: all 0.3s ease;
         color: var(--color-text);
-        opacity: 0.9
+        
     }
 
         aside .sidebar a:hover {
@@ -165,7 +174,7 @@ aside {
         }
 
         aside .sidebar a.activee {
-            color: var(--color-background);
+            color: var(--color-textdark);
             background-color: var(--color-text);
             opacity: 0.8;
             border-left: 4px solid red;
@@ -237,13 +246,13 @@ main .mainSection {
     
 }
 .dataTables_filter label {
-    color: var(--color-textdark);
+    color: var(--color-title);
 }
 .dataTables_length label {
-    color: var(--color-textdark);
+    color: var(--color-title);
 }
 .dataTables_info {
-    color: var(--color-textdark);
+    color: var(--color-title);
 }
 
 main .mainSection table {
@@ -251,12 +260,12 @@ main .mainSection table {
     text-align: center;
 }
 
-    main .mainSection h1 {
-        font-style: italic;
-        text-align: center;
-        margin: 10px 0 20px 0;
-        color: var(--color-textdark);
-    }
+main .mainSection h1 {
+    font-style: italic;
+    text-align: center;
+    margin: 10px 0 20px 0;
+    color: var(--color-title);
+}
 
     main .mainSection .title {
         text-decoration: underline;
@@ -373,7 +382,7 @@ main .mainSection .comForm button {
     gap: 50px;
     margin-left: 20px;
     min-height: 35rem;
-   
+    font-size: 1.2rem;
 }
 .containers .fontsize{
     font-size:1.3rem;
@@ -397,7 +406,7 @@ main .mainSection .comForm button {
     }
     .containers .grid2 .quantity h2 {
          text-align: center;
-         font-size: 1.5rem;
+         font-size: 1.2rem;
     }
 .containers .grid2 .circles{
     display:flex;
@@ -405,20 +414,20 @@ main .mainSection .comForm button {
     justify-content:center;
     align-items:center;
     gap:3rem;
-    margin-top:10px;
+    margin: 10px 25px;
 }
 
     .containers .grid2 .cnt {
         display: flex;
-        width: 10rem;
-        height: 10rem;
+        width: 7rem;
+        height: 7rem;
         background-color: var(--color-dashback);
         border: 5px inset black;
         border-radius: 100px;
         justify-content: center;
         align-items: center;
         transition: transform 1s;
-        color: var(--color-table);
+        color: var(--color-textdark);
     }
 
 .containers .tables {
@@ -442,7 +451,7 @@ main .mainSection .comForm button {
     border-bottom: 3px solid black;
     width: 100%;
     height: 20%;
-     color: var(--color-table);
+    color: var(--color-textdark);
 }
 .containers .tables Table{
     margin-top:10px;
@@ -470,7 +479,7 @@ main .mainSection .comForm button {
     flex-direction:column;
     gap:2rem;
     align-items:center;
-/*    background-color:red;*/
+
 }
     .containers .grid2 .activeAdmin {
         background-color: white;
@@ -491,7 +500,8 @@ main .mainSection .comForm button {
     border-bottom: 3px solid black;
     width: 100%;
     height: 50%;
-    color: var(--color-table);
+    color: var(--color-textdark);
+    font-size:1.2rem;
 }
 .containers .grid2 .activeAdmin h1 {
     margin-top:1rem;
@@ -517,7 +527,7 @@ main .mainSection .comForm button {
     border-bottom: 3px solid black;
     width: 100%;
     height: 20%;
-    color: var(--color-table);
+    color: var(--color-textdark);
 }
 .todolist .todo{
     display: grid;
