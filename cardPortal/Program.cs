@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using cardPortal.Data;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
     {
         options.LoginPath = "/Login/Index"; // Giriþ yapýlmadýysa buraya yönlendir
-    });
+    }
+);
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
