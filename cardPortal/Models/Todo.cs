@@ -7,6 +7,7 @@ namespace cardPortal.Models
     {
         [Key]
         public int TodoID { get; set; }
+        [Required(ErrorMessage = "Please type a task!")]
         public string Description { get; set; } = string.Empty;
         public int AdminID { get; set; }
     }
