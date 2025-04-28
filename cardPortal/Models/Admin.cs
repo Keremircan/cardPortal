@@ -7,6 +7,8 @@ namespace cardPortal.Models
     {
         [Key]
         public int AdminID { get; set; }
+        [Required]
+        public int RoleID { get; set; }
         [Required, MaxLength(50)]
         public string AdminName { get; set; } = string.Empty;
         [Required]

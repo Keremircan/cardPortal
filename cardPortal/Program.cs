@@ -20,7 +20,10 @@ builder.Services.AddSession(options =>
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
     {
-        options.LoginPath = "/Login/Index"; // Giriþ yapýlmadýysa buraya yönlendir
+        options.LoginPath = "/Login";
+        options.AccessDeniedPath = "/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // 30 dk sonra otomatik çýkar
+        options.SlidingExpiration = true; // kullanýcý aktifse süreyi uzatýr
     }
 );
 

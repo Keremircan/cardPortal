@@ -47,12 +47,15 @@
                         </span>
                         <h2>Personnel</h2>
                     </a>
-                    <a asp-area="" asp-controller="Company" asp-action="Index">
-                        <span class="material-symbols-outlined">
-                            apartment
-                        </span>
-                        <h2>Company</h2>
-                    </a>
+                    @if (Context.Session.GetInt32("RoleID") == 1){
+                        <a asp-area="" asp-controller="Company" asp-action="Index">
+                            <span class="material-symbols-outlined">
+                                apartment
+                            </span>
+                            <h2>Company</h2>
+                        </a>
+                    }
+                    
                     <a asp-area="" asp-controller="Admin" asp-action="Index">
                         <span class="material-symbols-outlined">
                             admin_panel_settings
@@ -89,6 +92,12 @@
                     </div>
                     <div class="profile">
                         <h2>@Context.Session.GetString("AdminName")</h2>
+                        @if (Context.Session.GetInt32("RoleID") == 1)
+                        {
+                            <h2>Main Admin</h2>
+                        }
+                        else {<h2>Sub Admin</h2>}
+                        
                         <span class="material-symbols-outlined">
                             account_circle
                         </span>

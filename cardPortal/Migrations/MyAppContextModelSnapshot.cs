@@ -49,6 +49,9 @@ namespace cardPortal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
                     b.HasKey("AdminID");
 
                     b.ToTable("Admins");

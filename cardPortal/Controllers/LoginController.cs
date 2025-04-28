@@ -39,6 +39,7 @@ namespace cardPortal.Controllers
                 HttpContext.Session.SetString("AdminName", admin.AdminName);
                 HttpContext.Session.SetString("AdminID", admin.AdminID.ToString());
                 HttpContext.Session.SetString("CompanyID", admin.CompanyID.ToString());
+                HttpContext.Session.SetInt32("RoleID", admin.RoleID);
             }
 
             if (admin.Password != login.Password)
