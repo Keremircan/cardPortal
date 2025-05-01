@@ -1,7 +1,7 @@
 ﻿
 
 $(document).ready(function () {
-	$(".pageTable").DataTable({});
+	$(".c").DataTable({});
 
 });
 

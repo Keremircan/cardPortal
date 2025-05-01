@@ -8,66 +8,52 @@
 
 <div class="containers"> 
 
-    <div class="grid1">
+    <div class="row" style="gap:2rem;margin-bottom:1rem;">
         
-
-        <div class="tables">
-            <h2 class="fontsize">Today Changes</h2>
-            <Table>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                    <th>Changed Time</th>
-                </tr>
-                @if (Model.Changes != null && Model.Changes.Any())
-                {
-                    @foreach (var change in Model.Changes)
-                    {
-                        <tr>
-                            <td>@change.Name</td>
-                            <td>@change.Category</td>
-                            <td>@change.Action</td>
-                            <td>@change.ChangeTime</td>
-                        </tr>
-                
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="4">No changes found.</td> 
-                    </tr>
-                }
-            </Table>
+        <div class="col-2 d-flex" style="width: 23%;height:5rem;color:black;">
+            <span class="material-symbols-outlined" style="text-align:center;width: 30%;padding-top:10px;background-color: #03a9f4;height: 100%;margin-left: -8px;">
+                group
+            </span>
+            <div style="width:100%;background-color:#b3e5fc;">
+                <h2 style="text-align:center;font-weight:900;font-size:1.2rem;padding:5px">Personnel</h2>
+                <h2 style="text-align:center;">@Context.Session.GetInt32("personnelCount")</h2>
+            </div>
+        </div>
+        <div class="col-2 d-flex" style="width: 23%;height:5rem;color:black;">
+            <span class="material-symbols-outlined" style="text-align:center;width: 30%;padding-top:10px;background-color: #4caf50;height: 100%;margin-left: -8px;">
+                domain
+            </span>
+            <div style="width:100%;background-color:#c8e6c9;">
+                <h2 style="text-align:center;font-weight:900;font-size:1.2rem;padding:5px">Company</h2>
+                <h2 style="text-align:center;">@Context.Session.GetInt32("companyCount")</h2>
+            </div>
+        </div>
+        <div class="col-2 d-flex" style="width: 23%;height:5rem;color:black;">
+            <span class="material-symbols-outlined" style="text-align:center;width: 30%;padding-top:10px;background-color: #ff9800;height: 100%;margin-left: -8px;">
+                shield_person
+            </span>
+            <div style="width:100%;background-color:#ffe0b2;">
+                <h2 style="text-align:center;font-weight:900;font-size:1.2rem;padding:5px">Admin</h2>
+                <h2 style="text-align:center;">@Context.Session.GetInt32("adminCount")</h2>
+            </div>
+        </div>
+        <div class="col-2 d-flex" style="width: 23%;height:5rem;color:black;">
+            <span class="material-symbols-outlined" style="text-align:center;width: 30%;padding-top:10px;background-color: #7e57c2;height: 100%;margin-left: -8px;">
+                radio_button_checked
+            </span>
+            <div style="width:100%;background-color:#d1c4e9;">
+                <h2 style="text-align:center;font-weight:900;font-size:1.2rem;padding:5px">Active Admin Number</h2>
+                <h2 style="text-align:center;">@Context.Session.GetInt32("loginCount")</h2>
+            </div>
         </div>
 
     </div>
 
-    <div class="grid2">
-        <div class="quantity">
-            <h2>Total Quantity of ... </h2>
-            <div class="circles">
-                <div class="cnt activee" id="perCircle">
-                    <h2 id="personnelText" data-count="@Context.Session.GetInt32("personnelCount")">Personnel</h2>
-                </div>
-                <div class="cnt" id="comCircle">
-                    <h2 id="companyText" data-count="@Context.Session.GetInt32("companyCount")">Company</h2>
-                </div>
-                <div class="cnt" id="admCircle">
-                    <h2 id="adminText" data-count="@Context.Session.GetInt32("adminCount")">Admin</h2>
-                </div>
-            </div>
-        </div>
+    <div class="row" style="gap:3rem;margin-bottom:1rem;">
 
-        <div class="activeAdmin">
-            <h2 class="fontsize">Active Admin Number</h2>
-            <h1>@Context.Session.GetInt32("loginCount")</h1>
-        </div>
-
-        <div class="tables">
+        <div class="col-5" style="width:45%;background-color:#f0f0f5">
             <h2 class="fontsize">Recently Logins</h2>
-            <Table>
+            <Table class="table">
                 <tr>
                     <th>Admin Name</th>
                     <th>Login Date</th>
@@ -86,44 +72,89 @@
                 }
 
             </Table>
-
         </div>
-    </div>
 
-</div>
-
-<div class="todolist">
-    <h2 class="todolisthead fontsize">To Do List</h2>
-    <div class="todo">
-        <form class="todo1" asp-action="Index" method="post">
-            <textarea name="Description" rows="4" cols="30" placeholder="Type a task..." required></textarea>
-            <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-        <div class="todo2">
-            <h2>Tasks</h2>
-            <div style="padding-left:15px;padding-top:15px;">
-                @if (Model.Todos != null && Model.Todos.Any())
-                {
-                    @foreach (var todo in Model.Todos)
+        <div class="todolist col-6" style="background-color:#f0f0f5;padding-bottom:5px;">
+            <div>
+                <h2>Tasks</h2>
+                <div style="padding-left:15px;padding-top:15px;">
+                    @if (Model.Todos != null && Model.Todos.Any())
                     {
-                        <div style="display:flex;">
-                            
-                            <h3>@todo.Description</h3>
-                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@todo.TodoID" class="btn btn-danger xbtn">X</a>
-
-                        </div>
+                        @foreach (var todo in Model.Todos)
+                        {
+                            <div style="display:flex;justify-content:space-between;padding: 4px;margin-bottom:5px;">
+                                <h3 style="margin-right:5px;display: flex;align-items: center;overflow-wrap: break-word;">@todo.Description</h3>
+                                <a asp-controller="Home" asp-action="Delete" asp-route-id="@todo.TodoID" class="btn btn-danger" style="display: flex;align-items: center;">X</a>
+                            </div>
+                        }
                     }
-                }
+                </div>
 
+                @if ((Model.Todos?.Count() ?? 0) == 0)
+                {
+                    <h3>No tasks Found!</h3>
+                }
             </div>
-            
-            @if ((Model.Todos?.Count() ?? 0) == 0)
-            {
-                <h3>No tasks Found!</h3>
-            }
+            <form style="display:flex;flex-direction:column" asp-action="Index" method="post">
+                <textarea name="Description" rows="4" cols="30" placeholder="Type a task..." required></textarea>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
         </div>
     </div>
+
 </div>
-<script>
-    console.log(@Json.Serialize(Model.Todos));
-</script>
+
+<div style="margin-left: 20px;">
+    <h2>Today Changes</h2>
+    <Table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Action</th>
+            <th>Changed Time</th>
+        </tr>
+        @if (Model.Changes != null && Model.Changes.Any())
+        {
+            @foreach (var change in Model.Changes)
+            {
+                <tr>
+                    <td>@change.Name</td>
+                    <td>@change.Category</td>
+                    <td>@change.Action</td>
+                    <td>@change.ChangeTime</td>
+                </tr>
+
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">No changes found.</td>
+            </tr>
+        }
+    </Table>
+</div>
+
+
+@* <script> *@
+@*     console.log(@Json.Serialize(Model.Todos)); *@
+@* </script> *@
+
+
+
+
+@* <div class="quantity col-3"> *@
+
+@* <h2>Total Quantity of ... </h2> *@
+@* <div class="circles"> *@
+@*     <div class="cnt activee" id="perCircle"> *@
+@*         <h2 id="personnelText" data-count="@Context.Session.GetInt32("personnelCount")">Personnel</h2> *@
+@*     </div> *@
+@*     <div class="cnt" id="comCircle"> *@
+@*         <h2 id="companyText" data-count="@Context.Session.GetInt32("companyCount")">Company</h2> *@
+@*     </div> *@
+@*     <div class="cnt" id="admCircle"> *@
+@*         <h2 id="adminText" data-count="@Context.Session.GetInt32("adminCount")">Admin</h2> *@
+@*     </div> *@
+@* </div> *@
+@* </div> *@
